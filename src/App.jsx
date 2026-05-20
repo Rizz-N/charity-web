@@ -9,6 +9,11 @@ import ZakatPage from "./pages/ZakatPage";
 import SedekahPage from "./pages/SedekahPage";
 import DonasiDetails from "./pages/DonasiDetails";
 import WaqafPage from "./pages/WaqafPage";
+import ZPenghasilan from "./pages/ZPenghasilan";
+import ZMaal from "./pages/ZMaal";
+import ZFitrah from "./pages/ZFitrah";
+import ZFidyah from "./pages/ZFidyah";
+import ZEmas from "./pages/ZEmas";
 
 function App() {
   return (
@@ -20,7 +25,13 @@ function App() {
             <Route index element={<MainContent />} />
             <Route path="donasi" element={<DonasiPage />} />
             <Route path="donasi/:slug" element={<DonasiDetails />} />
-            <Route path="zakat" element={<ZakatPage />} />
+            <Route path="zakat" element={<ZakatPage />}>
+              <Route index element={<ZPenghasilan />} />
+              <Route path="maal" element={<ZMaal />} />
+              <Route path="fitrah" element={<ZFitrah />} />
+              <Route path="fidyah" element={<ZFidyah />} />
+              <Route path="emas" element={<ZEmas />} />
+            </Route>
             <Route path="sedekah" element={<SedekahPage />} />
             <Route path="waqaf" element={<WaqafPage />} />
           </Route>
