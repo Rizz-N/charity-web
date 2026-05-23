@@ -9,6 +9,7 @@ import ZakatPage from "./pages/ZakatPage";
 import SedekahPage from "./pages/SedekahPage";
 import DonasiDetails from "./pages/DonasiDetails";
 import WaqafPage from "./pages/WaqafPage";
+import KurbanPage from "./pages/KurbanPage";
 import ZPenghasilan from "./pages/ZPenghasilan";
 import ZMaal from "./pages/ZMaal";
 import ZFitrah from "./pages/ZFitrah";
@@ -34,6 +35,7 @@ function App() {
             </Route>
             <Route path="sedekah" element={<SedekahPage />} />
             <Route path="waqaf" element={<WaqafPage />} />
+            <Route path="kurban" element={<KurbanPage />} />
           </Route>
         </Routes>
       </Router>

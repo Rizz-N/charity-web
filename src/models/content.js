@@ -247,3 +247,56 @@ export const data = [
     ],
   },
 ];
+
+export const kurbanData = [
+  {
+    id: 1,
+    image: thumb,
+    title: "Domba/Kambing Medium",
+    slug: "domba-kambing-medium",
+    category: "kambing",
+    price: 2349000,
+    weight_min: 36,
+    weight_max: 38,
+    stock: 12,
+    description: "Kambing sehat sesuai syariat, cocok untuk qurban individu.",
+  },
+  {
+    id: 2,
+    image: thumb,
+    title: "Domba/Kambing Large",
+    slug: "domba-kambing-large",
+    category: "kambing",
+    price: 2899000,
+    weight_min: 39,
+    weight_max: 45,
+    stock: 8,
+    description:
+      "Bobot lebih besar dengan kualitas premium dan perawatan terbaik.",
+  },
+  {
+    id: 3,
+    image: thumb,
+    title: "Sapi 1/7 Reguler",
+    slug: "sapi-1-per-7-reguler",
+    category: "sapi",
+    price: 2450000,
+    weight_min: 250,
+    weight_max: 300,
+    stock: 20,
+    description: "Patungan sapi untuk 7 orang sesuai ketentuan qurban syariat.",
+  },
+  {
+    id: 4,
+    image: thumb,
+    title: "Sapi Premium 1/7",
+    slug: "sapi-premium-1-per-7",
+    category: "sapi",
+    price: 3200000,
+    weight_min: 320,
+    weight_max: 380,
+    stock: 10,
+    description:
+      "Sapi premium sehat dengan distribusi daging ke wilayah membutuhkan.",
+  },
+];
