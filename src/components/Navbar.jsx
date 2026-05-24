@@ -14,10 +14,33 @@ const Navbar = () => {
         <NavLink to={"/"} className="uppercase text-2xl">
           home
         </NavLink>
-        <div className="gap-5 justify-between font-medium hidden sm:flex">
+        <div className="gap-8 font-medium hidden md:flex">
           {navigation.map((nav) => {
             return (
-              <NavLink key={nav.id} to={nav.path}>
+              <NavLink
+                key={nav.id}
+                to={nav.path}
+                className={({ isActive }) =>
+                  `
+    relative inline-block pb-2 text-white font-medium
+    transition-all duration-300
+
+    after:content-['']
+    after:absolute
+    after:left-0
+    after:bottom-0
+    after:h-0.5
+    after:w-0
+    after:bg-white
+    after:transition-all
+    after:duration-300
+
+    hover:after:w-full
+
+    ${isActive ? "after:w-full font-semibold" : ""}
+    `
+                }
+              >
                 {nav.name}
               </NavLink>
             );

@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { data } from "../models/content";
 import { BiHome } from "react-icons/bi";
+import Breadcrumb from "../components/Breadcrumb";
 
 const DonasiDetails = () => {
   const { slug } = useParams();
@@ -14,13 +15,7 @@ const DonasiDetails = () => {
   return (
     <>
       <div className="px-10 py-5 mt-20 bg-slate-200">
-        <div className="flex items-center gap-2 pb-4">
-          <Link to="/donasi" className="text-slate-600 hover:text-black">
-            <BiHome />
-          </Link>
-          <span>-</span>
-          <p className="text-slate-600">{slug}</p>
-        </div>
+        <Breadcrumb />
         <img
           src={news.thumbnail}
           alt={news.title}
