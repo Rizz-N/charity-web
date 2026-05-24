@@ -12,7 +12,7 @@ const SedekahPage = () => {
         <img
           src={thumb}
           alt="image"
-          className="w-full h-full object-cover grayscale-[40%] scale-105"
+          className="w-full h-full object-cover grayscale-40 scale-105"
         />
 
         {/* text */}

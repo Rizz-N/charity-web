@@ -75,7 +75,7 @@ const ZFidyah = () => {
           <div className="space-y-5">
             {/* days */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+              <label className=" text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
                 <LuCalendar className="w-4 h-4" />
                 Jumlah Hari Puasa
               </label>

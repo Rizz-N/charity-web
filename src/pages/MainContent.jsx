@@ -232,7 +232,7 @@ const MainContent = () => {
 
                 <div className="p-6 flex flex-col gap-4">
                   <span className="text-sm text-blue-600 font-medium">
-                    {d.createdat}
+                    {d.createdAt}
                   </span>
 
                   <p className="text-2xl font-bold text-slate-800">{d.title}</p>

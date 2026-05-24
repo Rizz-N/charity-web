@@ -5,7 +5,7 @@ import { data } from "../models/content";
 
 const DonasiPage = () => {
   const options = ["Terbaru", "Terlama", "Sisa Hari Terdekat"];
-
+  const filterData = data.filter((item) => item.type === "donasi");
   const [selected, setSelected] = useState("Terbaru");
   const [open, setOpen] = useState(false);
 
@@ -103,7 +103,7 @@ const DonasiPage = () => {
 
       {/* card news */}
       <div className="px-6 md:px-10 mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {data.map((d) => {
+        {filterData.map((d) => {
           return (
             <div
               key={d.id}
