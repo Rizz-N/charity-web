@@ -136,7 +136,7 @@ const WaqafPage = () => {
                   </p>
 
                   <Link
-                    to={`/donasi/${d.slug}`}
+                    to={`/waqaf/${d.slug}`}
                     className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
                   >
                     Read More

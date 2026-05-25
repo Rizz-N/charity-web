@@ -8,6 +8,7 @@ import DonasiPage from "./pages/DonasiPage";
 import ZakatPage from "./pages/ZakatPage";
 import SedekahPage from "./pages/SedekahPage";
 import DonasiDetails from "./pages/DonasiDetails";
+import WaqafDetails from "./pages/WaqafDetails";
 import WaqafPage from "./pages/WaqafPage";
 import KurbanPage from "./pages/KurbanPage";
 import ZPenghasilan from "./pages/ZPenghasilan";
@@ -26,6 +27,7 @@ function App() {
             <Route index element={<MainContent />} />
             <Route path="donasi" element={<DonasiPage />} />
             <Route path="donasi/:slug" element={<DonasiDetails />} />
+            <Route path="waqaf/:slug" element={<WaqafDetails />} />
             <Route path="zakat" element={<ZakatPage />}>
               <Route index element={<ZPenghasilan />} />
               <Route path="maal" element={<ZMaal />} />

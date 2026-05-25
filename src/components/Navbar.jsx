@@ -35,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       {/* navbar */}
-      <div className="px-4 md:px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-between fixed top-0 left-0 w-full z-50 shadow-lg">
+      <div className="px-4 md:px-8 py-4 bg-linear-to-r from-blue-500 to-blue-700 flex items-center justify-between fixed top-0 left-0 w-full z-50 shadow-lg">
         {/* logo */}
         <NavLink to="/" className="uppercase text-2xl font-bold text-white">
           home
