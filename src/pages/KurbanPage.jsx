@@ -12,8 +12,8 @@ const KurbanPage = () => {
 
   return (
     <>
-      <div className="pt-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 px-6 md:px-10 ">
+      <div className="mt-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 px-6 md:px-10 py-5">
           {kurbanData.map((k) => {
             return (
               <div

@@ -2,7 +2,9 @@ import ZakatLayout from "../components/ZakatLayout";
 const ZakatPage = () => {
   return (
     <>
-      <ZakatLayout />
+      <div className="mt-20">
+        <ZakatLayout />
+      </div>
     </>
   );
 };
