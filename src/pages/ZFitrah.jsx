@@ -73,7 +73,7 @@ const ZFitrah = () => {
         <div className="space-y-5">
           {/* family count */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+            <label className=" text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
               <LuUsers className="w-4 h-4" />
               Jumlah Jiwa
             </label>
@@ -89,7 +89,7 @@ const ZFitrah = () => {
 
           {/* rice price */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
+            <label className=" text-sm font-medium text-slate-700 mb-2 flex items-center gap-2">
               <FaRupiahSign className="w-4 h-4" />
               Harga Beras per Kg
             </label>

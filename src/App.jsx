@@ -16,6 +16,7 @@ import ZMaal from "./pages/ZMaal";
 import ZFitrah from "./pages/ZFitrah";
 import ZFidyah from "./pages/ZFidyah";
 import ZEmas from "./pages/ZEmas";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route path="emas" element={<ZEmas />} />
             </Route>
             <Route path="sedekah" element={<SedekahPage />} />
+            <Route path="sedekah/bayar" element={<PaymentPage />} />
             <Route path="waqaf" element={<WaqafPage />} />
             <Route path="kurban" element={<KurbanPage />} />
           </Route>

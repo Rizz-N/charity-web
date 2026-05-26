@@ -1,5 +1,6 @@
 import React from "react";
 import thumb from "../assets/main-hero.png";
+import { Link } from "react-router-dom";
 
 const SedekahPage = () => {
   return (
@@ -28,21 +29,13 @@ const SedekahPage = () => {
 
         <div className="mt-5 px-4 md:px-10 flex flex-col md:flex-row-reverse gap-8">
           {/* button section */}
-          <div className="w-full md:w-auto flex md:justify-start inline-block">
-            <button
-              className="
-      whitespace-nowrap
-      w-full md:w-auto
-      px-6 py-3
-      rounded-xl
-      bg-blue-600 hover:bg-blue-500
-      text-white font-semibold
-      transition duration-300
-      shadow-lg hover:shadow-xl
-      "
+          <div className="w-full md:w-auto inline-block md:justify-star">
+            <Link
+              to={"bayar"}
+              className="whitespace-nowrap w-full md:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition duration-300 shadow-lg hover:shadow-xl"
             >
               Sedekah Sekarang
-            </button>
+            </Link>
           </div>
 
           {/* content */}

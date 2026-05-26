@@ -66,7 +66,7 @@ const ZMaal = () => {
         <div className="bg-white rounded-3xl shadow-lg border border-slate-100 p-5 md:p-8">
           {/* info */}
           <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 flex gap-3 mb-6">
-            <LuCalendar className="w-5 h-5 text-amber-600 flex-shrink-0 mt-1" />
+            <LuCalendar className="w-5 h-5 text-amber-600 shrink-0 mt-1" />
 
             <div className="text-sm text-amber-800">
               <p className="font-semibold mb-2">Syarat Zakat Maal</p>
