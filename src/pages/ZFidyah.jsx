@@ -10,6 +10,7 @@ const ZFidyah = () => {
   const [daysMissed, setDaysMissed] = useState("");
   const [ricePrice, setRicePrice] = useState("15000");
   const [result, setResult] = useState(null);
+  const [message, setMessage] = useState("");
 
   const RICE_PER_DAY_KG = 0.75; // 1 mud = 0.75 kg
   const RICE_PER_DAY_LITER = 1.05;
@@ -19,8 +20,10 @@ const ZFidyah = () => {
     const pricePerKg = parseFloat(ricePrice) || 0;
 
     if (days <= 0) {
-      alert("Masukkan jumlah hari puasa yang ditinggalkan");
+      setMessage("Masukkan jumlah hari puasa yang ditinggalkan");
       return;
+    } else {
+      setMessage("");
     }
 
     const totalRiceKg = days * RICE_PER_DAY_KG;
@@ -33,6 +36,13 @@ const ZFidyah = () => {
       riceLiter: totalRiceLiter,
       money: totalMoney,
     });
+  };
+
+  const reset = () => {
+    setDaysMissed("");
+    setRicePrice("");
+    setResult("");
+    setMessage("");
   };
 
   return (
@@ -111,16 +121,29 @@ const ZFidyah = () => {
             </div>
 
             {/* button */}
-            <button
-              onClick={calculateFidyah}
-              className="w-full flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white py-3 rounded-xl font-medium transition"
-            >
-              <CalcIcon className="w-4 h-4" />
-              Hitung Fidyah
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                onClick={calculateFidyah}
+                className=" flex-1 w-full flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white py-3 rounded-xl font-medium transition"
+              >
+                <CalcIcon className="w-4 h-4" />
+                Hitung Fidyah
+              </button>
+              <button
+                onClick={reset}
+                className="sm:w-32 border border-slate-200 hover:bg-slate-100 py-3 rounded-xl font-medium transition"
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
           {/* result */}
+          {message && (
+            <div className="mt-8 rounded-2xl border border-cyan-100 bg-cyan-50 p-5">
+              {message}
+            </div>
+          )}
           {result && (
             <div className="mt-8 rounded-2xl border border-cyan-100 bg-cyan-50 p-5">
               <h3 className="font-bold text-lg text-cyan-800 mb-4">

@@ -41,6 +41,12 @@ const ZEmas = () => {
     }
   };
 
+  const reset = () => {
+    setGoldGram("");
+    setSilverGram("");
+    setResult("");
+  };
+
   return (
     <>
       <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
@@ -112,14 +118,22 @@ const ZEmas = () => {
               </p>
             </div>
 
-            {/* button */}
-            <button
-              onClick={calculateZakat}
-              className="w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-medium transition"
-            >
-              <LuTrendingUp className="w-4 h-4" />
-              Hitung Zakat
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              {/* button */}
+              <button
+                onClick={calculateZakat}
+                className=" flex-1 w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-medium transition"
+              >
+                <LuTrendingUp className="w-4 h-4" />
+                Hitung Zakat
+              </button>
+              <button
+                onClick={reset}
+                className="sm:w-32 border border-slate-200 hover:bg-slate-100 py-3 rounded-xl font-medium transition"
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
           {/* result */}
@@ -135,7 +149,7 @@ const ZEmas = () => {
 
               {result.eligible ? (
                 <div className="space-y-3">
-                  <p className="text-slate-700">✅ {result.message}</p>
+                  <p className="text-slate-700">{result.message}</p>
 
                   <div className="pt-4 border-t border-amber-200">
                     <p className="text-sm text-slate-500 mb-1">
@@ -158,7 +172,7 @@ const ZEmas = () => {
                   </div>
                 </div>
               ) : (
-                <p className="text-slate-600">ℹ️ {result.message}</p>
+                <p className="text-slate-600">{result.message}</p>
               )}
             </div>
           )}

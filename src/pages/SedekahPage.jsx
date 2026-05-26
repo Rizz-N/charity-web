@@ -26,13 +26,27 @@ const SedekahPage = () => {
           </div>
         </div>
 
-        <div className="mt-5 px-10 flex flex-col md:flex-row-reverse gap-5 ">
-          <div className="w-100">
-            <button className="bg-blue-600 hover:bg-blue-400 rounded-md px-4 py-2 font-medium text-white">
+        <div className="mt-5 px-4 md:px-10 flex flex-col md:flex-row-reverse gap-8">
+          {/* button section */}
+          <div className="w-full md:w-auto flex md:justify-start inline-block">
+            <button
+              className="
+      whitespace-nowrap
+      w-full md:w-auto
+      px-6 py-3
+      rounded-xl
+      bg-blue-600 hover:bg-blue-500
+      text-white font-semibold
+      transition duration-300
+      shadow-lg hover:shadow-xl
+      "
+            >
               Sedekah Sekarang
             </button>
           </div>
-          <div className="space-y-5 text-justify text-slate-700 leading-relaxed md:text-lg">
+
+          {/* content */}
+          <div className="space-y-5 text-justify text-slate-700 leading-relaxed text-sm md:text-lg flex-1">
             <p>
               Tidak semua orang memiliki kesempatan untuk menikmati hidup dengan
               tenang. Di saat sebagian dari kita dapat makan dengan layak, tidur

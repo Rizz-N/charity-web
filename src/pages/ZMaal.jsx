@@ -39,6 +39,13 @@ const ZMaal = () => {
     }
   };
 
+  const reset = () => {
+    setSavings("");
+    setGold("");
+    setBusiness("");
+    setResult("");
+  };
+
   return (
     <>
       <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
@@ -140,12 +147,21 @@ const ZMaal = () => {
             </div>
 
             {/* button */}
-            <button
-              onClick={calculateZakat}
-              className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-medium transition"
-            >
-              Hitung Zakat Maal
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                onClick={calculateZakat}
+                className=" flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-medium transition"
+              >
+                Hitung Zakat Maal
+              </button>
+
+              <button
+                onClick={reset}
+                className="sm:w-32 border border-slate-200 hover:bg-slate-100 py-3 rounded-xl font-medium transition"
+              >
+                Reset
+              </button>
+            </div>
           </div>
 
           {/* result */}
