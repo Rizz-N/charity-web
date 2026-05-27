@@ -37,7 +37,7 @@ function App() {
               <Route path="emas" element={<ZEmas />} />
             </Route>
             <Route path="sedekah" element={<SedekahPage />} />
-            <Route path="sedekah/bayar" element={<PaymentPage />} />
+            <Route path=":type/bayar/:slug" element={<PaymentPage />} />
             <Route path="waqaf" element={<WaqafPage />} />
             <Route path="kurban" element={<KurbanPage />} />
           </Route>

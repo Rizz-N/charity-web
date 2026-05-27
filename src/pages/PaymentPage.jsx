@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import thumb from "../assets/main-hero.png";
 import Breadcrumb from "../components/Breadcrumb";
+import { data } from "../models/content";
 
 const PaymentPage = () => {
+  const { slug } = useParams();
+  const datas = data.find((item) => item.slug === slug);
   const nominalList = [10000, 20000, 50000, 100000, 200000, 500000];
 
   const [amount, setAmount] = useState("");
@@ -23,16 +27,20 @@ const PaymentPage = () => {
     setAmount(value);
   };
 
+  if (!datas) {
+    return <div>Tidak ada data</div>;
+  }
+
   return (
     <>
-      <div className="mt-20 px-10">
+      {/* <div className="mt-20 px-10">
         <Breadcrumb />
-      </div>
+      </div> */}
       {/* hero */}
-      <div className=" bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-center gap-8 px-6 md:px-10 py-10 rounded-b-3xl">
-        <div className="w-52 md:w-72">
+      <div className="mt-20 bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-start gap-8 px-6 md:px-10 py-10 rounded-b-3xl">
+        <div className="w-full">
           <img
-            src={thumb}
+            src={datas.thumbnail}
             alt="image"
             className="w-full object-cover rounded-3xl shadow-xl"
           />
@@ -40,13 +48,11 @@ const PaymentPage = () => {
 
         <div className="text-center md:text-left">
           <p className="text-white font-bold text-3xl md:text-5xl leading-tight">
-            Mari Bersedekah
-            <br />
-            Melalui Kami
+            {datas.title}
           </p>
 
           <p className="text-blue-100 mt-4 text-sm md:text-lg">
-            Sedekah kecil hari ini dapat menjadi harapan besar bagi mereka.
+            {datas.excerpt}
           </p>
         </div>
       </div>

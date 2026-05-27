@@ -430,6 +430,19 @@ export const data = [
       },
     ],
   },
+  {
+    id: 11,
+    slug: "Sedekah",
+    title: "Mari sedekah bersama kami",
+    excerpt:
+      "Sedekah bukan hanya tentang memberi materi, tetapi tentang menghadirkan harapan bagi mereka yang hampir kehilangan alasan untuk percaya bahwa dunia masih peduli.",
+    thumbnail: "https://picsum.photos/id/129/400/200",
+    createdAt: "14 Februari 2026",
+    author: "Peduli Umat",
+    type: "sedekah",
+
+    content: [],
+  },
 ];
 
 export const kurbanData = [
