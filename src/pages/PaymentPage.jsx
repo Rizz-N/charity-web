@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import thumb from "../assets/main-hero.png";
 import Breadcrumb from "../components/Breadcrumb";
 import { data } from "../models/content";
+import { paymentHandler } from "../services/handlerPay";
 
 const PaymentPage = () => {
   const { slug } = useParams();
@@ -18,6 +19,15 @@ const PaymentPage = () => {
   const [atasNama, setAtasNama] = useState("");
   const [message, setMessage] = useState("");
 
+  const resetForm = () => {
+    setAmount("");
+    setSelectedAmount(null);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setAtasNama("");
+    setMessage("");
+  };
   // validasi form
   const isFormValid = amount && name && email && phone && atasNama && message;
 
@@ -30,14 +40,16 @@ const PaymentPage = () => {
   if (!datas) {
     return <div>Tidak ada data</div>;
   }
-
   return (
     <>
       {/* <div className="mt-20 px-10">
         <Breadcrumb />
       </div> */}
       {/* hero */}
-      <div className="mt-20 bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-start gap-8 px-6 md:px-10 py-10 rounded-b-3xl">
+      <div
+        key={datas.id}
+        className="mt-20 bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-start gap-8 px-6 md:px-10 py-10 rounded-b-3xl"
+      >
         <div className="w-full">
           <img
             src={datas.thumbnail}
@@ -191,6 +203,18 @@ const PaymentPage = () => {
             {/* payment button */}
             <button
               disabled={!isFormValid}
+              onClick={() =>
+                paymentHandler.getTokenPay(
+                  {
+                    slug: slug,
+                    amount: amount,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                  },
+                  resetForm,
+                )
+              }
               className={`w-full mt-8 py-4 rounded-2xl font-semibold text-white transition duration-300
               ${
                 isFormValid
