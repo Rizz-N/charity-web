@@ -18,6 +18,14 @@ import ZFidyah from "./pages/ZFidyah";
 import ZEmas from "./pages/ZEmas";
 import PaymentPage from "./pages/PaymentPage";
 
+//
+
+import Auth from "./pages/admin/Auth";
+import Dashboard from "./pages/admin/Dashboard";
+import AdminLayout from "./components/AdminLayout";
+import Article from "./pages/admin/Article";
+import Product from "./pages/admin/Product";
+
 function App() {
   return (
     <>
@@ -40,6 +48,12 @@ function App() {
             <Route path=":type/bayar/:slug" element={<PaymentPage />} />
             <Route path="waqaf" element={<WaqafPage />} />
             <Route path="kurban" element={<KurbanPage />} />
+          </Route>
+          <Route path="auth" element={<Auth />} />
+          <Route path="dashboard" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="article" element={<Article />} />
+            <Route path="product" element={<Product />} />
           </Route>
         </Routes>
       </Router>

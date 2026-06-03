@@ -15,7 +15,7 @@ const Footer = () => {
     <>
       <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-10 px-10 py-12 mt-10 bg-white border-t border-slate-200">
         <div>
-          <p className="text-blue-700 font-bold text-2xl mb-4">HOME</p>
+          <p className="text-blue-700 font-bold text-2xl mb-4">YBMI</p>
           <ul className="space-y-2">
             {navigation.map((n) => (
               <li key={n.id}>

@@ -156,7 +156,12 @@ const MainContent = () => {
                   key={item.id}
                   className="card-item min-w-[calc(50%-8px)] lg:min-w-0"
                 >
-                  <Card Icon={item.icon} title={item.title} desc={item.desc} />
+                  <Card
+                    Icon={item.icon}
+                    title={item.title}
+                    desc={item.desc}
+                    path={item.path}
+                  />
                 </div>
               );
             })}
@@ -222,7 +227,10 @@ const MainContent = () => {
             {/* card */}
             {data.slice(0, 3).map((d) => {
               return (
-                <div className="bg-white rounded-3xl overflow-hidden shadow-lg  border border-slate-100 group">
+                <div
+                  key={d.id}
+                  className="bg-white rounded-3xl overflow-hidden shadow-lg  border border-slate-100 group"
+                >
                   <div className="overflow-hidden">
                     <img
                       src={d.thumbnail}

@@ -1,5 +1,11 @@
 import thumb from "../assets/main-hero.png";
 
+const cowImage =
+  "https://i.pinimg.com/736x/6f/0b/c1/6f0bc1bf28102eea3d509cfd68637bd7.jpg";
+
+const sheepImage =
+  "https://i.pinimg.com/1200x/4e/ef/2b/4eef2b1d42f8aff3f1f1ac66c238ed81.jpg";
+
 export const data = [
   // ================= DONASI =================
   {
@@ -8,7 +14,8 @@ export const data = [
     title: "Bantu Anak Yatim Tetap Sekolah",
     excerpt:
       "Ratusan anak yatim membutuhkan bantuan biaya pendidikan dan perlengkapan sekolah.",
-    thumbnail: "https://picsum.photos/id/100/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/1a/81/a3/1a81a357ca4cd8b250072725a273a8c7.jpg",
     createdAt: "10 Januari 2026",
     author: "Peduli Umat",
     type: "donasi",
@@ -51,7 +58,8 @@ export const data = [
     title: "Sedekah Pangan untuk Lansia",
     excerpt:
       "Program bantuan pangan mingguan untuk para lansia dhuafa di pelosok desa.",
-    thumbnail: "https://picsum.photos/id/103/400/200",
+    thumbnail:
+      "https://i.pinimg.com/1200x/58/39/12/58391221a28409a1d45930a3ccc9abae.jpg",
     createdAt: "15 Januari 2026",
     author: "Peduli Umat",
     type: "donasi",
@@ -94,7 +102,8 @@ export const data = [
     title: "Bantuan Korban Banjir",
     excerpt:
       "Ribuan warga terdampak banjir membutuhkan makanan, pakaian, dan obat-obatan.",
-    thumbnail: "https://picsum.photos/id/106/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/5c/c6/ac/5cc6acf1542b0f812c0639bc592280f4.jpg",
     createdAt: "20 Januari 2026",
     author: "Peduli Umat",
     type: "donasi",
@@ -137,7 +146,8 @@ export const data = [
     title: "Donasi Ambulance Gratis",
     excerpt:
       "Bantu hadirkan layanan ambulance gratis untuk masyarakat kurang mampu.",
-    thumbnail: "https://picsum.photos/id/109/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/17/a7/e7/17a7e76cc7fe480ae1529246ddc4b6fc.jpg",
     createdAt: "25 Januari 2026",
     author: "Peduli Umat",
     type: "donasi",
@@ -179,7 +189,8 @@ export const data = [
     slug: "program-makan-gratis-santri",
     title: "Program Makan Gratis Santri",
     excerpt: "Bantu kebutuhan makan harian para santri penghafal Al-Quran.",
-    thumbnail: "https://picsum.photos/id/112/400/200",
+    thumbnail:
+      "https://i.pinimg.com/1200x/6f/1c/48/6f1c483c411e4e1b97a440436df50117.jpg",
     createdAt: "30 Januari 2026",
     author: "Peduli Umat",
     type: "donasi",
@@ -223,7 +234,8 @@ export const data = [
     title: "Waqaf Pembangunan Masjid",
     excerpt:
       "Mari ikut berkontribusi dalam pembangunan masjid untuk masyarakat desa.",
-    thumbnail: "https://picsum.photos/id/115/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/91/5e/b4/915eb436733d340ccb513f4ebacf3d40.jpg",
     createdAt: "02 Februari 2026",
     author: "Peduli Umat",
     type: "waqaf",
@@ -266,7 +278,8 @@ export const data = [
     title: "Waqaf Al-Quran untuk Pesantren",
     excerpt:
       "Ribuan santri membutuhkan mushaf Al-Quran yang layak untuk belajar.",
-    thumbnail: "https://picsum.photos/id/118/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/a6/c2/e0/a6c2e05346f309354c9206e5b119f3df.jpg",
     createdAt: "05 Februari 2026",
     author: "Peduli Umat",
     type: "waqaf",
@@ -309,7 +322,8 @@ export const data = [
     title: "Waqaf Sumur Air Bersih",
     excerpt:
       "Bangun sumur air bersih untuk warga yang kesulitan mendapatkan air.",
-    thumbnail: "https://picsum.photos/id/121/400/200",
+    thumbnail:
+      "https://i.pinimg.com/1200x/1b/2a/5c/1b2a5cf91bbe5d1e0d33a543a140e2a3.jpg",
     createdAt: "08 Februari 2026",
     author: "Peduli Umat",
     type: "waqaf",
@@ -351,7 +365,8 @@ export const data = [
     slug: "waqaf-rumah-tahfidz",
     title: "Waqaf Rumah Tahfidz",
     excerpt: "Dukung pembangunan rumah tahfidz untuk generasi penghafal Quran.",
-    thumbnail: "https://picsum.photos/id/124/400/200",
+    thumbnail:
+      "https://i.pinimg.com/1200x/6c/40/8a/6c408a4cfe3e02d3c9a64adbfaab2e04.jpg",
     createdAt: "10 Februari 2026",
     author: "Peduli Umat",
     type: "waqaf",
@@ -394,7 +409,8 @@ export const data = [
     title: "Waqaf Karpet Masjid",
     excerpt:
       "Bantu pengadaan karpet masjid agar jamaah lebih nyaman beribadah.",
-    thumbnail: "https://picsum.photos/id/127/400/200",
+    thumbnail:
+      "https://i.pinimg.com/736x/ac/fd/18/acfd185024b9fe16a8bc40a7494e06ef.jpg",
     createdAt: "14 Februari 2026",
     author: "Peduli Umat",
     type: "waqaf",
@@ -436,7 +452,8 @@ export const data = [
     title: "Mari sedekah bersama kami",
     excerpt:
       "Sedekah bukan hanya tentang memberi materi, tetapi tentang menghadirkan harapan bagi mereka yang hampir kehilangan alasan untuk percaya bahwa dunia masih peduli.",
-    thumbnail: "https://picsum.photos/id/129/400/200",
+    thumbnail:
+      "https://i.pinimg.com/1200x/5c/31/c5/5c31c5b4a58cfcf2bc06c5118a3ab2c9.jpg",
     createdAt: "14 Februari 2026",
     author: "Peduli Umat",
     type: "sedekah",
@@ -448,7 +465,7 @@ export const data = [
 export const kurbanData = [
   {
     id: 1,
-    image: thumb,
+    image: sheepImage,
     title: "Domba/Kambing Medium",
     slug: "domba-kambing-medium",
     category: "kambing",
@@ -460,7 +477,7 @@ export const kurbanData = [
   },
   {
     id: 2,
-    image: thumb,
+    image: sheepImage,
     title: "Domba/Kambing Large",
     slug: "domba-kambing-large",
     category: "kambing",
@@ -473,7 +490,7 @@ export const kurbanData = [
   },
   {
     id: 3,
-    image: thumb,
+    image: cowImage,
     title: "Sapi 1/7 Reguler",
     slug: "sapi-1-per-7-reguler",
     category: "sapi",
@@ -485,7 +502,7 @@ export const kurbanData = [
   },
   {
     id: 4,
-    image: thumb,
+    image: cowImage,
     title: "Sapi Premium 1/7",
     slug: "sapi-premium-1-per-7",
     category: "sapi",
@@ -497,3 +514,4 @@ export const kurbanData = [
       "Sapi premium sehat dengan distribusi daging ke wilayah membutuhkan.",
   },
 ];
+// thumb default appwrite 6a1a9cd9001e758533d2

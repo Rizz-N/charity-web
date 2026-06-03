@@ -11,7 +11,7 @@ const SedekahPage = () => {
       <div className="mt-20">
         {filterData.map((d) => {
           return (
-            <div>
+            <div key={d.id}>
               <div className="relative w-full h-56 md:h-80 overflow-hidden rounded-b-3xl">
                 {/* overlay */}
                 <div className="absolute inset-0 bg-black/40 z-10" />

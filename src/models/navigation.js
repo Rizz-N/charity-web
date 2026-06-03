@@ -4,6 +4,7 @@ export const navigation = [
   { id: 3, name: "Sedekah", path: "sedekah" },
   { id: 4, name: "Waqaf", path: "waqaf" },
   { id: 5, name: "Kurban", path: "kurban" },
+  { id: 6, name: "Login", path: "auth" },
 ];
 
 export const about = [
