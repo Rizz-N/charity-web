@@ -39,7 +39,7 @@ function App() {
             <Route path="waqaf/:slug" element={<WaqafDetails />} />
             <Route path="zakat" element={<ZakatPage />}>
               <Route index element={<ZPenghasilan />} />
-              <Route path="maal" element={<ZMaal />} />
+              <Route path="mal" element={<ZMaal />} />
               <Route path="fitrah" element={<ZFitrah />} />
               <Route path="fidyah" element={<ZFidyah />} />
               <Route path="emas" element={<ZEmas />} />
