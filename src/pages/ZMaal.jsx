@@ -50,15 +50,14 @@ const ZMaal = () => {
   return (
     <>
       <div>
-        <main>
+        <div>
           <Articlemal />
-        </main>
+        </div>
         <div className="max-w-4xl mx-auto px-4 md:px-6 py-8">
           {/* header */}
           <div className="mb-8">
             <h1 className="text-2xl md:text-4xl font-bold text-emerald-700 flex items-center gap-3">
-              <FaRupiahSign className="w-7 h-7 md:w-9 md:h-9" />
-              Zakat Mal
+              Kalkulator Zakat Mal
             </h1>
 
             <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">

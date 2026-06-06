@@ -49,31 +49,33 @@ const ZPenghasilan = () => {
   return (
     <>
       <div>
-        <main>
+        <div>
           <ArticleZakatP />
-        </main>
-        {/* kalkulator */}
+        </div>
 
-        <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
+        {/* kalkulator */}
+        <div className="max-w-4xl mx-auto px-4 md:px-6 py-8">
           <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold text-emerald-700 mb-4 leading-tight">
             Kalkulator Zakat
           </h1>
           {/* card */}
           <div className="bg-white rounded-3xl shadow-lg border border-slate-100 p-5 md:p-8">
             {/* info */}
-            <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 flex gap-3 mb-6">
-              <LuCircleAlert className="w-5 h-5 text-amber-600 shrink-0 mt-1" />
-
-              <div className="text-sm text-amber-800 space-y-1">
+            <div className="mb-4">
+              <div className="flex flex-col gap-2">
                 <p className="font-semibold">Informasi Nisab</p>
-
-                <p>
-                  Nisab tahunan: Rp
+                <div>
+                  <p>Nisab Tahunan</p>
+                </div>
+                <p className="px-2 py-2 bg-gray-100 ring-1 ring-slate-200 w-full rounded-xl">
+                  Rp
                   {NISAB_AMOUNT.toLocaleString()}
                 </p>
-
-                <p>
-                  Nisab bulanan: Rp
+                <div>
+                  <p>Nisab Bulanan</p>
+                </div>
+                <p className="px-2 py-2 bg-gray-100 ring-1 ring-slate-200 w-full rounded-xl">
+                  Rp
                   {MONTHLY_NISAB.toLocaleString()}
                 </p>
               </div>

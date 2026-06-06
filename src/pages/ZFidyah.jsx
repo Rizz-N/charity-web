@@ -5,6 +5,7 @@ import {
   LuUtensilsCrossed,
   LuCalculator as CalcIcon,
 } from "react-icons/lu";
+import ArticleFidyah from "../components/ArticleFidyah";
 
 const ZFidyah = () => {
   const [daysMissed, setDaysMissed] = useState("");
@@ -47,6 +48,11 @@ const ZFidyah = () => {
 
   return (
     <>
+      <div>
+        <ArticleFidyah />
+      </div>
+
+      {/* calculator */}
       <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
         {/* header */}
         <div className="mb-8">

@@ -1,6 +1,7 @@
 // src/pages/ZakatEmas.jsx
 import { useState } from "react";
 import { LuGem, LuWeight, LuTrendingUp } from "react-icons/lu";
+import ArticleGold from "../components/ArticleGold";
 
 const ZEmas = () => {
   const [goldGram, setGoldGram] = useState("");
@@ -49,6 +50,11 @@ const ZEmas = () => {
 
   return (
     <>
+      <div>
+        <ArticleGold />
+      </div>
+
+      {/* calculator */}
       <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
         {/* header */}
         <div className="mb-8">
