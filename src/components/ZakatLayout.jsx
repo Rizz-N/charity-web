@@ -4,10 +4,10 @@ import { Outlet, NavLink } from "react-router-dom";
 const ZakatLayout = () => {
   const link = [
     { id: 1, name: "Penghasilan", path: "" },
-    { id: 2, name: "Mal", path: "mal" },
-    { id: 3, name: "Fitrah", path: "fitrah" },
-    { id: 4, name: "Fidyah", path: "fidyah" },
-    { id: 5, name: "Emas", path: "emas" },
+    { id: 2, name: "Mal", path: "zakat/mal" },
+    { id: 3, name: "Fitrah", path: "zakat/fitrah" },
+    { id: 4, name: "Fidyah", path: "zakat/fidyah" },
+    { id: 5, name: "Emas", path: "zakat/emas" },
   ];
   return (
     <>

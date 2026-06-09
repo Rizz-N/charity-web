@@ -37,12 +37,12 @@ function App() {
             <Route path="donasi" element={<DonasiPage />} />
             <Route path="donasi/:slug" element={<DonasiDetails />} />
             <Route path="waqaf/:slug" element={<WaqafDetails />} />
-            <Route path="zakat" element={<ZakatPage />}>
+            <Route path="zakat/penghasilan" element={<ZakatPage />}>
               <Route index element={<ZPenghasilan />} />
-              <Route path="mal" element={<ZMaal />} />
-              <Route path="fitrah" element={<ZFitrah />} />
-              <Route path="fidyah" element={<ZFidyah />} />
-              <Route path="emas" element={<ZEmas />} />
+              <Route path="zakat/mal" element={<ZMaal />} />
+              <Route path="zakat/fitrah" element={<ZFitrah />} />
+              <Route path="zakat/fidyah" element={<ZFidyah />} />
+              <Route path="zakat/emas" element={<ZEmas />} />
             </Route>
             <Route path="sedekah" element={<SedekahPage />} />
             <Route path=":type/bayar/:slug" element={<PaymentPage />} />

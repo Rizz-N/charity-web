@@ -6,7 +6,7 @@ const niatZakat =
 const ArticleZakatP = () => {
   return (
     <>
-      <article className=" mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 font-sans text-gray-800">
+      <article className=" mx-auto px-4 sm:px-6 lg:px-8  font-sans text-gray-800">
         <header className="mb-8 border-b border-gray-200 pb-6">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             Apa itu Zakat Penghasilan?
