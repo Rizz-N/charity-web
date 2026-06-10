@@ -25,6 +25,8 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminLayout from "./components/AdminLayout";
 import Article from "./pages/admin/Article";
 import Product from "./pages/admin/Product";
+import Paymentzakat from "./pages/Paymentzakat";
+import ZakatLayout from "./components/ZakatLayout";
 
 function App() {
   return (
@@ -37,15 +39,16 @@ function App() {
             <Route path="donasi" element={<DonasiPage />} />
             <Route path="donasi/:slug" element={<DonasiDetails />} />
             <Route path="waqaf/:slug" element={<WaqafDetails />} />
-            <Route path="zakat/penghasilan" element={<ZakatPage />}>
-              <Route index element={<ZPenghasilan />} />
-              <Route path="zakat/mal" element={<ZMaal />} />
-              <Route path="zakat/fitrah" element={<ZFitrah />} />
-              <Route path="zakat/fidyah" element={<ZFidyah />} />
-              <Route path="zakat/emas" element={<ZEmas />} />
+            <Route path="zakat" element={<ZakatLayout />}>
+              <Route path="penghasilan" element={<ZPenghasilan />} />
+              <Route path="mal" element={<ZMaal />} />
+              <Route path="fitrah" element={<ZFitrah />} />
+              <Route path="fidyah" element={<ZFidyah />} />
+              <Route path="emas" element={<ZEmas />} />
             </Route>
             <Route path="sedekah" element={<SedekahPage />} />
             <Route path=":type/bayar/:slug" element={<PaymentPage />} />
+            <Route path="zakat/:type/bayar" element={<Paymentzakat />} />
             <Route path="waqaf" element={<WaqafPage />} />
             <Route path="kurban" element={<KurbanPage />} />
           </Route>

@@ -143,7 +143,12 @@ const ZPenghasilan = () => {
               Hitung ulang
             </button>
             <Link
-              to={`/bayar/zakat/penghasilan/totalpay${zakat}`}
+              to={`bayar`}
+              state={{
+                zakat,
+                jenis: "zakat penghasilan",
+                type: "zp",
+              }}
               className="w-full text-center text-white font-bold rounded-xl py-3 bg-linear-to-r from-blue-500 to-blue-700 hover:bg-linear-to-r hover:from-blue-400 hover:to-blue-600 cursor-pointer"
             >
               Bayar zakat
