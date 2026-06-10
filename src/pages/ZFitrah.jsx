@@ -73,7 +73,7 @@ const ZFitrah = () => {
               state={{
                 zakat,
                 jenis: "zakat fitrah",
-                type: "zp",
+                type: "zft",
               }}
               className="w-full text-center text-white font-bold rounded-xl py-3 bg-linear-to-r from-blue-500 to-blue-700 hover:bg-linear-to-r hover:from-blue-400 hover:to-blue-600 cursor-pointer"
             >
