@@ -49,7 +49,9 @@ const Paymentzakat = () => {
               <p className="text-sm text-blue-600 font-medium text-center">
                 Total zakat yang akan kamu bayarkan
               </p>
-              <p className="text-xl font-bold text-center mt-1">Rp {zakat}</p>
+              <p className="text-xl font-bold text-center mt-1">
+                Rp {Number(zakat).toLocaleString("id-ID")}
+              </p>
             </div>
           </div>
         </div>
@@ -106,7 +108,7 @@ const Paymentzakat = () => {
                   Total
                 </span>
                 <p className="w-full rounded-xl border border-slate-200 bg-slate-100 py-3 px-1">
-                  Rp {zakat.toLocaleString("id-ID")}
+                  Rp {Number(zakat).toLocaleString("id-ID")}
                 </p>
               </div>
 

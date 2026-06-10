@@ -1,193 +1,112 @@
 // src/pages/ZakatEmas.jsx
 import { useState } from "react";
-import { LuGem, LuWeight, LuTrendingUp } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import ArticleGold from "../components/ArticleGold";
 
 const ZEmas = () => {
-  const [goldGram, setGoldGram] = useState("");
-  const [silverGram, setSilverGram] = useState("");
-  const [result, setResult] = useState(null);
+  const [gold, setGold] = useState("");
+  const [silver, setSilver] = useState("");
 
-  const GOLD_PRICE = 1000000;
-  const SILVER_PRICE = 15000;
-  const GOLD_NISAB = 85;
-  const ZAKAT_RATE = 0.025;
+  const [goldPrice, setGoldPice] = useState("1140000");
+  //
+  const silverPrice = 13600;
 
-  const calculateZakat = () => {
-    const goldAmount = parseFloat(goldGram) || 0;
-    const silverAmount = parseFloat(silverGram) || 0;
-
-    const goldValue = goldAmount * GOLD_PRICE;
-    const silverValue = silverAmount * SILVER_PRICE;
-    const totalValue = goldValue + silverValue;
-
-    if (goldAmount >= GOLD_NISAB) {
-      const zakatGoldGram = goldAmount * ZAKAT_RATE;
-      const zakatGoldValue = zakatGoldGram * GOLD_PRICE;
-      setResult({
-        eligible: true,
-        goldGram: goldAmount,
-        zakatGram: zakatGoldGram,
-        zakatValue: zakatGoldValue,
-        totalValue: totalValue,
-        message: `Emas yang Anda miliki (${goldAmount} gram) telah mencapai nisab (85 gram). Wajib zakat emas.`,
-      });
-    } else {
-      setResult({
-        eligible: false,
-        goldGram: goldAmount,
-        nisabGram: GOLD_NISAB,
-        message: `Emas Anda ${goldAmount} gram belum mencapai nisab ${GOLD_NISAB} gram. Belum wajib zakat emas.`,
-      });
-    }
+  const formatRupiah = (value) => {
+    const number = value.replace(/\D/g, "");
+    return new Intl.NumberFormat("id-ID").format(number);
   };
-
-  const reset = () => {
-    setGoldGram("");
-    setSilverGram("");
-    setResult("");
+  const handleChange = (setter) => (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setter(value);
   };
+  const goldWeight = Number(gold) || 0;
+  const eligible = goldWeight >= 85;
+  const totalWealth = goldWeight * Number(goldPrice) || 0;
+  const zakat = eligible ? totalWealth * 0.025 : 0;
 
   return (
     <>
-      <div>
-        <ArticleGold />
-      </div>
-
-      {/* calculator */}
-      <div className="max-w-2xl mx-auto px-4 md:px-6 py-8">
-        {/* header */}
-        <div className="mb-8">
-          <h1 className="text-2xl md:text-4xl font-bold text-amber-700 flex items-center gap-3">
-            <LuGem className="w-7 h-7 md:w-9 md:h-9" />
-            Zakat Emas & Perak
-          </h1>
-
-          <p className="text-sm md:text-base text-slate-500 mt-3 leading-relaxed">
-            Hitung zakat emas dan perak berdasarkan jumlah gram yang dimiliki
-            selama 1 tahun.
-          </p>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex-2">
+          <ArticleGold />
         </div>
 
-        {/* card */}
-        <div className="bg-white rounded-3xl shadow-lg border border-slate-100 p-5 md:p-8">
-          {/* info */}
-          <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 flex gap-3 mb-6">
-            <LuWeight className="w-5 h-5 text-amber-600 shrink-0 mt-1" />
-
-            <div className="text-sm text-amber-800 space-y-1">
-              <p className="font-semibold">Ketentuan Zakat</p>
-
-              <p>Nisab emas: 85 gram</p>
-
-              <p>Kadar zakat: 2.5%</p>
-
-              <p>Haul kepemilikan: 1 tahun</p>
-
-              <p>Harga emas: Rp{GOLD_PRICE.toLocaleString()}/gram</p>
-            </div>
-          </div>
-
+        {/* calculator */}
+        <div className="flex-1">
+          <p className="text-xl text-slate-500 uppercase font-bold">
+            Kalkulator zakat emas
+          </p>
           {/* form */}
-          <div className="space-y-5">
-            {/* gold */}
+          <div className="my-5 flex flex-col gap-3">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Jumlah Emas (gram)
+              <label className="block text-md text-slate-500 mb-2 after:content-['*'] after:text-red-400 after:ml-1 ">
+                Emas Yang dimiliki (dalam betuk gr)
               </label>
-
               <input
-                type="number"
-                value={goldGram}
-                onChange={(e) => setGoldGram(e.target.value)}
-                placeholder="Contoh: 100"
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500"
+                type="text"
+                inputMode="numeric"
+                name=""
+                id=""
+                value={gold}
+                onChange={handleChange(setGold)}
+                placeholder="0 gr"
+                className="w-full rounded-xl border border-slate-200 py-3 px-1 focus:ring-2 focus:ring-blue-400 outline-none"
               />
             </div>
 
-            {/* silver */}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-2">
-                Jumlah Perak (opsional)
+              <label className="block text-md text-slate-500 mb-2 after:content-['*'] after:text-red-400 after:ml-1 ">
+                Harga emas saat ini
               </label>
-
               <input
-                type="number"
-                value={silverGram}
-                onChange={(e) => setSilverGram(e.target.value)}
-                placeholder="Perak nisab 595 gram"
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 outline-none focus:ring-2 focus:ring-amber-500"
+                type="text"
+                inputMode="numeric"
+                name=""
+                id=""
+                value={goldPrice ? `Rp ${formatRupiah(goldPrice)}` : "Rp 0"}
+                onChange={handleChange(setGoldPice)}
+                placeholder="Rp 0"
+                className="w-full rounded-xl border border-slate-200 py-3 px-1 focus:ring-2 focus:ring-blue-400 outline-none"
               />
+            </div>
 
-              <p className="text-xs text-slate-400 mt-2">
-                Nisab perak setara 595 gram
+            <div>
+              <span className="block text-md text-slate-500 mb-2 font-bold">
+                apakah saya wajib membayar zakat emas?
+              </span>
+              <p className="w-full rounded-xl border border-slate-200 py-3 px-1">
+                {eligible ? "YA" : "TIDAK"}
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              {/* button */}
-              <button
-                onClick={calculateZakat}
-                className=" flex-1 w-full flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-xl font-medium transition"
-              >
-                <LuTrendingUp className="w-4 h-4" />
-                Hitung Zakat
-              </button>
-              <button
-                onClick={reset}
-                className="sm:w-32 border border-slate-200 hover:bg-slate-100 py-3 rounded-xl font-medium transition"
-              >
-                Reset
-              </button>
+            <div>
+              <span className="block text-md text-slate-500 mb-2 font-bold">
+                jumlah yang harus saya bayar
+              </span>
+              <p className="w-full rounded-xl border border-slate-200 py-3 px-1">
+                Rp {zakat.toLocaleString("id-ID")}
+              </p>
             </div>
-          </div>
 
-          {/* result */}
-          {result && (
-            <div
-              className={`mt-8 rounded-2xl p-5 border ${
-                result.eligible
-                  ? "bg-amber-50 border-amber-200"
-                  : "bg-slate-50 border-slate-200"
-              }`}
+            <button
+              onClick={() => setGold(0)}
+              className="w-full text-slate-500 border-2 border-slate-500 font-bold rounded-xl py-3 hover:bg-slate-100 cursor-pointer"
             >
-              <h3 className="font-bold text-lg mb-4">Hasil Perhitungan</h3>
-
-              {result.eligible ? (
-                <div className="space-y-3">
-                  <p className="text-slate-700">{result.message}</p>
-
-                  <div className="pt-4 border-t border-amber-200">
-                    <p className="text-sm text-slate-500 mb-1">
-                      Zakat yang harus dibayar
-                    </p>
-
-                    <p className="text-2xl md:text-4xl font-bold text-amber-700">
-                      {result.zakatGram.toFixed(2)} gram
-                    </p>
-
-                    <p className="text-lg md:text-2xl font-semibold text-emerald-700 mt-2">
-                      Rp{Math.round(result.zakatValue).toLocaleString()}
-                    </p>
-
-                    {result.goldGram > 0 && (
-                      <p className="text-sm text-slate-500 mt-2">
-                        (2.5% × {result.goldGram} gram emas)
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <p className="text-slate-600">{result.message}</p>
-              )}
-            </div>
-          )}
+              Hitung ulang
+            </button>
+            <Link
+              to={`bayar`}
+              state={{
+                zakat,
+                jenis: "zakat emas",
+                type: "ze",
+              }}
+              className="w-full text-center text-white font-bold rounded-xl py-3 bg-linear-to-r from-blue-500 to-blue-700 hover:bg-linear-to-r hover:from-blue-400 hover:to-blue-600 cursor-pointer"
+            >
+              Bayar zakat
+            </Link>
+          </div>
         </div>
-
-        {/* footer */}
-        <p className="text-center text-xs md:text-sm text-slate-400 mt-5">
-          Perhitungan menggunakan standar nisab emas 85 gram
-        </p>
       </div>
     </>
   );
