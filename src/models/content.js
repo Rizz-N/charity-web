@@ -10,6 +10,7 @@ export const data = [
   // ================= DONASI =================
   {
     id: 1,
+    p_id: "BYAS",
     slug: "bantu-anak-yatim-sekolah",
     title: "Bantu Anak Yatim Tetap Sekolah",
     excerpt:
@@ -54,6 +55,7 @@ export const data = [
 
   {
     id: 2,
+    p_id: "SPL",
     slug: "sedekah-pangan-lansia",
     title: "Sedekah Pangan untuk Lansia",
     excerpt:
@@ -98,6 +100,7 @@ export const data = [
 
   {
     id: 3,
+    p_id: "BKB",
     slug: "bantuan-korban-banjir",
     title: "Bantuan Korban Banjir",
     excerpt:
@@ -142,6 +145,7 @@ export const data = [
 
   {
     id: 4,
+    p_id: "DAG",
     slug: "donasi-ambulance-gratis",
     title: "Donasi Ambulance Gratis",
     excerpt:
@@ -186,6 +190,7 @@ export const data = [
 
   {
     id: 5,
+    p_id: "PMGS",
     slug: "program-makan-gratis-santri",
     title: "Program Makan Gratis Santri",
     excerpt: "Bantu kebutuhan makan harian para santri penghafal Al-Quran.",
@@ -230,6 +235,7 @@ export const data = [
   // ================= WAQAF =================
   {
     id: 6,
+    p_id: "WQPM",
     slug: "waqaf-pembangunan-masjid",
     title: "Waqaf Pembangunan Masjid",
     excerpt:
@@ -274,6 +280,7 @@ export const data = [
 
   {
     id: 7,
+    p_id: "WQAP",
     slug: "waqaf-alquran-pesantren",
     title: "Waqaf Al-Quran untuk Pesantren",
     excerpt:
@@ -318,6 +325,7 @@ export const data = [
 
   {
     id: 8,
+    p_id: "WQAB",
     slug: "waqaf-sumur-air-bersih",
     title: "Waqaf Sumur Air Bersih",
     excerpt:
@@ -362,6 +370,7 @@ export const data = [
 
   {
     id: 9,
+    p_id: "WQRT",
     slug: "waqaf-rumah-tahfidz",
     title: "Waqaf Rumah Tahfidz",
     excerpt: "Dukung pembangunan rumah tahfidz untuk generasi penghafal Quran.",
@@ -405,6 +414,7 @@ export const data = [
 
   {
     id: 10,
+    p_id: "WQKM",
     slug: "waqaf-karpet-masjid",
     title: "Waqaf Karpet Masjid",
     excerpt:
@@ -448,6 +458,7 @@ export const data = [
   },
   {
     id: 11,
+    p_id: "S",
     slug: "Sedekah",
     title: "Mari sedekah bersama kami",
     excerpt:
@@ -465,6 +476,7 @@ export const data = [
 export const kurbanData = [
   {
     id: 1,
+    p_id: "DM",
     image: sheepImage,
     title: "Domba/Kambing Medium",
     slug: "domba-kambing-medium",
@@ -473,10 +485,12 @@ export const kurbanData = [
     weight_min: 36,
     weight_max: 38,
     stock: 12,
+    status: "active",
     description: "Kambing sehat sesuai syariat, cocok untuk qurban individu.",
   },
   {
     id: 2,
+    p_id: "DL",
     image: sheepImage,
     title: "Domba/Kambing Large",
     slug: "domba-kambing-large",
@@ -485,11 +499,13 @@ export const kurbanData = [
     weight_min: 39,
     weight_max: 45,
     stock: 8,
+    status: "active",
     description:
       "Bobot lebih besar dengan kualitas premium dan perawatan terbaik.",
   },
   {
     id: 3,
+    p_id: "SR",
     image: cowImage,
     title: "Sapi 1/7 Reguler",
     slug: "sapi-1-per-7-reguler",
@@ -498,10 +514,12 @@ export const kurbanData = [
     weight_min: 250,
     weight_max: 300,
     stock: 20,
+    status: "active",
     description: "Patungan sapi untuk 7 orang sesuai ketentuan qurban syariat.",
   },
   {
     id: 4,
+    p_id: "SP",
     image: cowImage,
     title: "Sapi Premium 1/7",
     slug: "sapi-premium-1-per-7",
@@ -510,6 +528,7 @@ export const kurbanData = [
     weight_min: 320,
     weight_max: 380,
     stock: 10,
+    status: "active",
     description:
       "Sapi premium sehat dengan distribusi daging ke wilayah membutuhkan.",
   },
