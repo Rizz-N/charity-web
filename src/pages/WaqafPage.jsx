@@ -1,4 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import {
+  FaWhatsapp,
+  FaFacebook,
+  FaInstagram,
+  FaShareAlt,
+  FaLink,
+} from "react-icons/fa";
 import { LuChevronDown } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { data } from "../models/content";
@@ -10,6 +18,43 @@ const WaqafPage = () => {
 
   const [selected, setSelected] = useState("Terbaru");
   const [open, setOpen] = useState(false);
+  const [openShare, setOpenShare] = useState(null);
+
+  // const BASEURL = ""
+  const getShareUrl = (slug) => {
+    // ini nanti di ganti BASE_URL
+    return `${window.location.origin}/donasi/${slug}`;
+  };
+
+  const getShareText = (title, excerpt, slug) => {
+    return `*${title}*
+    
+    ${excerpt}
+    
+    ${getShareUrl(slug)}
+    `;
+  };
+
+  const copyLink = async (slug) => {
+    const url = getShareUrl(slug);
+
+    try {
+      await navigator.clipboard.writeText(url);
+      toast("Link berhasil disalin");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    const closeShare = () => setOpenShare(null);
+
+    document.addEventListener("click", closeShare);
+
+    return () => {
+      document.removeEventListener("click", closeShare);
+    };
+  }, []);
 
   return (
     <>
@@ -134,13 +179,65 @@ const WaqafPage = () => {
                   <p className="text-sm md:text-base text-slate-500 leading-relaxed line-clamp-3">
                     {d.excerpt}
                   </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="relative mt-auto">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenShare(openShare === d.id ? null : d.id);
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 hover:bg-slate-50"
+                      >
+                        <FaShareAlt />
+                        Share
+                      </button>
 
-                  <Link
-                    to={`/waqaf/${d.slug}`}
-                    className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
-                  >
-                    Read More
-                  </Link>
+                      {openShare === d.id && (
+                        <div
+                          className="absolute bottom-12 left-0 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 flex gap-3 z-50"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {/* WhatsApp */}
+                          <a
+                            href={`https://wa.me/?text=${encodeURIComponent(
+                              getShareText(d.title, d.excerpt, d.slug),
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-2xl text-green-500 hover:scale-110 transition"
+                          >
+                            <FaWhatsapp />
+                          </a>
+
+                          {/* Facebook */}
+                          <a
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                              getShareUrl(d.slug),
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-2xl text-blue-600 hover:scale-110 transition"
+                          >
+                            <FaFacebook />
+                          </a>
+
+                          {/* Copy Link */}
+                          <button
+                            onClick={() => copyLink(d.slug)}
+                            className="text-2xl text-slate-600 hover:scale-110 transition"
+                          >
+                            <FaLink />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <Link
+                      to={`/waqaf/${d.slug}`}
+                      className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
+                    >
+                      Read More
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

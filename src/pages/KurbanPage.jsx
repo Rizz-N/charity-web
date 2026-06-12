@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { FaWhatsapp, FaFacebook, FaShareAlt, FaLink } from "react-icons/fa";
 import { kurbanData } from "../models/content";
 const KurbanPage = () => {
+  const [openShare, setOpenShare] = useState(null);
   const formatter = (number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -9,6 +12,33 @@ const KurbanPage = () => {
       minimumFractionDigits: 0,
     }).format(number);
   };
+
+  const getShareUrl = (slug) => {
+    return `${window.location.origin}${slug}`;
+  };
+
+  const getShareText = (slug) => {
+    return ` AYO QURBAN di YBMI 
+
+Mari berpartisipasi dalam ibadah qurban melalui Yayasan Berkembang Mandiri Indonesia.
+
+${getShareUrl(slug)}`;
+  };
+
+  const copyLink = async (slug) => {
+    await navigator.clipboard.writeText(getShareUrl(slug));
+    toast("Link berhasil disalin");
+  };
+
+  useEffect(() => {
+    const closeShare = () => setOpenShare(null);
+
+    document.addEventListener("click", closeShare);
+
+    return () => {
+      document.removeEventListener("click", closeShare);
+    };
+  }, []);
 
   return (
     <>
@@ -51,12 +81,67 @@ const KurbanPage = () => {
                     </p>
                   </div>
 
-                  <Link
-                    to={k.slug}
-                    className="mt-auto text-center px-5 py-3 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition duration-300"
-                  >
-                    Kurban Sekarang
-                  </Link>
+                  <div className="flex justify-between items-center mt-auto">
+                    <div className="relative">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenShare(openShare === k.id ? null : k.id);
+                        }}
+                        className="p-3 rounded-xl border border-slate-200 hover:bg-slate-50"
+                      >
+                        <FaShareAlt />
+                      </button>
+
+                      {openShare === k.id && (
+                        <div
+                          className="absolute bottom-14 left-0 bg-white shadow-xl border rounded-2xl p-3 flex gap-4 z-50"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {/* WA */}
+                          <a
+                            href={`https://wa.me/?text=${encodeURIComponent(
+                              getShareText(k.slug),
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-green-500 text-2xl"
+                          >
+                            <FaWhatsapp />
+                          </a>
+
+                          {/* FB */}
+                          <a
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                              getShareUrl(k.slug),
+                            )}&quote=${encodeURIComponent(
+                              " AYO QURBAN di YBMI ",
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-blue-600 text-2xl"
+                          >
+                            <FaFacebook />
+                          </a>
+
+                          {/* Copy */}
+                          <button
+                            onClick={() => copyLink(k.slug)}
+                            className="text-slate-600 text-2xl"
+                          >
+                            <FaLink />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    <Link
+                      to={k.slug}
+                      className="px-5 py-3 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition duration-300"
+                    >
+                      Kurban Sekarang
+                    </Link>
+                  </div>
                 </div>
               </div>
             );
