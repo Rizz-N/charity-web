@@ -1,9 +1,11 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaPlus, FaTrash, FaFileAlt } from "react-icons/fa";
 
 const Article = () => {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
+  const [pId, setPId] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
 
   const [content, setContent] = useState([
@@ -44,42 +46,74 @@ const Article = () => {
     setContent(updated);
   };
 
-  const submitArticle = (e) => {
+  const reserForm = () => {
+    setThumbnail(null);
+    setTitle("");
+    setPId("");
+    setExcerpt("");
+    setContent([
+      {
+        type: "paragraph",
+        text: "",
+      },
+    ]);
+  };
+
+  const submitArticle = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
+    const fileToBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
 
-    formData.append("title", title);
-    formData.append("excerpt", excerpt);
+        reader.readAsDataURL(file);
 
-    if (thumbnail) {
-      formData.append("thumbnail", thumbnail);
-    }
+        reader.onload = () => resolve(reader.result);
 
-    const payloadContent = content.map((item, index) => {
-      if (item.type === "image") {
-        const fileKey = `image_${index}`;
+        reader.onerror = reject;
+      });
 
-        if (item.file) {
-          formData.append(fileKey, item.file);
+    const payloadContent = await Promise.all(
+      content.map(async (item) => {
+        if (item.type === "image") {
+          return {
+            type: "image",
+            caption: item.caption,
+            image: item.file ? await fileToBase64(item.file) : null,
+          };
         }
 
         return {
-          type: "image",
-          caption: item.caption,
-          fileKey,
+          type: "paragraph",
+          text: item.text,
         };
-      }
+      }),
+    );
 
-      return {
-        type: "paragraph",
-        text: item.text,
-      };
-    });
+    const thumbnailBase64 = thumbnail ? await fileToBase64(thumbnail) : null;
 
-    formData.append("content", JSON.stringify(payloadContent));
+    const newArticle = {
+      id: Date.now(),
+      p_id: pId,
+      slug: title.toLowerCase().replaceAll(" ", "-"),
+      title,
+      excerpt,
+      thumbnail: thumbnailBase64,
+      createdAt: new Date().toLocaleDateString("id-ID"),
+      author: "Admin",
+      type: "donasi",
+      content: payloadContent,
+    };
 
-    console.log(payloadContent);
+    const articles = JSON.parse(localStorage.getItem("articles")) || [];
+
+    articles.push(newArticle);
+
+    localStorage.setItem("articles", JSON.stringify(articles));
+
+    toast.success("Berhasil disimpan");
+    reserForm();
+    console.log(newArticle);
   };
 
   const thumbnailPreview = thumbnail ? URL.createObjectURL(thumbnail) : null;
@@ -87,7 +121,7 @@ const Article = () => {
   return (
     <div className="p-6">
       <div className="bg-white rounded-2xl shadow-lg p-6">
-        <h1 className="text-2xl font-bold mb-6">Create Berita</h1>
+        <h1 className="text-2xl font-bold mb-6">Create Article</h1>
 
         <form onSubmit={submitArticle} className="space-y-5">
           <div>
@@ -112,6 +146,18 @@ const Article = () => {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              className="w-full border rounded-xl p-3 mt-2"
+            />
+          </div>
+
+          <div>
+            <label className="font-medium">Payment ID (p_id)</label>
+
+            <input
+              type="text"
+              value={pId}
+              onChange={(e) => setPId(e.target.value)}
+              placeholder="Contoh: BYAS"
               className="w-full border rounded-xl p-3 mt-2"
             />
           </div>

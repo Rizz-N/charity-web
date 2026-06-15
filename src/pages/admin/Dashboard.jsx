@@ -1,6 +1,20 @@
 import React from "react";
+import { chartData } from "../../models/content";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 const Dashboard = () => {
+  const data = chartData.map((i) => i);
+  console.log("chart data", data);
+
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-6">Dashboard Yayasan</h1>
@@ -32,8 +46,52 @@ const Dashboard = () => {
       <div className="bg-white p-5 rounded-xl shadow mb-6">
         <h2 className="font-semibold text-lg mb-4">Grafik Donasi Bulanan</h2>
 
-        <div className="h-80 flex items-center justify-center border rounded-lg">
-          Tempat Grafik Recharts
+        <div className="h-80">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={data}
+              margin={{
+                top: 10,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+
+              <XAxis dataKey="month" />
+
+              <YAxis />
+
+              <Tooltip
+                formatter={(value, name) => {
+                  if (name === "Donasi") {
+                    return [`Rp ${value.toLocaleString("id-ID")}`, "Donasi"];
+                  }
+
+                  return [value, "Donatur"];
+                }}
+              />
+
+              <Legend />
+
+              <Line
+                type="monotone"
+                dataKey="donasi"
+                stroke="#2563eb"
+                strokeWidth={3}
+                name="Donasi"
+              />
+
+              <Line
+                type="monotone"
+                dataKey="donatur"
+                stroke="#16a34a"
+                strokeWidth={3}
+                name="Donatur"
+              />
+            </LineChart>
+          </ResponsiveContainer>
         </div>
       </div>
 

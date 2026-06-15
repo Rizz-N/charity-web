@@ -27,6 +27,9 @@ import Article from "./pages/admin/Article";
 import Product from "./pages/admin/Product";
 import Paymentzakat from "./pages/Paymentzakat";
 import ZakatLayout from "./components/ZakatLayout";
+import ArticleLayout from "./components/ArticleLayout";
+import UpdateArticle from "./pages/admin/UpdateArticle";
+import DeleteArticle from "./pages/admin/DeleteArticle";
 
 function App() {
   return (
@@ -55,7 +58,11 @@ function App() {
           <Route path="auth" element={<Auth />} />
           <Route path="dashboard" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="article" element={<Article />} />
+            <Route path="article" element={<ArticleLayout />}>
+              <Route index element={<Article />} />
+              <Route path="update" element={<UpdateArticle />} />
+              <Route path="delete" element={<DeleteArticle />} />
+            </Route>
             <Route path="product" element={<Product />} />
           </Route>
         </Routes>

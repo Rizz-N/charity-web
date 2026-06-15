@@ -106,7 +106,7 @@ const MainContent = () => {
       <div className="mt-20 md:mt-0">
         <div className="relative flex justify-center">
           <img src={Hero} alt="hero" className="object-contain grayscale-50 " />
-          <div className="absolute bottom-0 md:text-2xl text-xs text-shadow-lg/30 text-white flex h-full items-center">
+          <div className="absolute bottom-0 md:text-2xl text-xs text-shadow-lg/30 text-white drop-shadow-[1px_1px_0px_black] flex h-full items-center">
             <div className="flex items-start flex-col gap-5">
               <p>sekecil apapun itu berharga bagi kami</p>
               <q className=" font-medium">
@@ -125,7 +125,7 @@ const MainContent = () => {
         {/* service section */}
 
         <div className="px-10 md:px-10 mt-10 relative">
-          <p className="md:text-5xl font-bold uppercase text-blue-700 text-shadow-xs ">
+          <p className="md:text-5xl font-bold uppercase text-blue-700 drop-shadow-[1px_1px_0px_black] text-shadow-xs ">
             Layanan <span className="text-yellow-300">Kami</span>
           </p>
 
@@ -170,7 +170,7 @@ const MainContent = () => {
         </div>
 
         <div className="mt-16 px-6 md:px-10 py-10 bg-linear-to-r from-blue-500 to-blue-700 rounded-t-4xl shadow-xl">
-          <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight text-white drop-shadow-lg">
+          <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight text-white drop-shadow-[1px_1px_0px_black]">
             Mengapa berbagi <br />
             bersama <span className="text-yellow-300">kami?</span>
           </p>
@@ -206,7 +206,7 @@ const MainContent = () => {
           {/* title */}
           <div className="flex mb-8">
             <div className="w-full">
-              <p className="text-blue-700 font-bold text-3xl md:text-5xl uppercase">
+              <p className="text-blue-700 drop-shadow-[1px_1px_0px_black] font-bold text-3xl md:text-5xl uppercase">
                 Latest News
               </p>
               <div className="flex justify-between">

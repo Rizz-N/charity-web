@@ -28,7 +28,7 @@ const Paymentzakat = () => {
     setTelephone(value);
   };
 
-  const total = zakat + 4000;
+  const total = Number(zakat) + 4000;
   const isFormValid = name && telephone && email;
 
   return (
@@ -103,13 +103,25 @@ const Paymentzakat = () => {
                 />
               </div>
 
-              <div className="mt-10">
-                <span className="block text-md text-slate-500 mb-2 font-bold">
-                  Total
+              <div className="mt-10 space-y-3">
+                <span className="block text-md font-bold text-slate-700">
+                  Total Pembayaran
                 </span>
-                <p className="w-full rounded-xl border border-slate-200 bg-slate-100 py-3 px-1">
-                  Rp {Number(zakat).toLocaleString("id-ID")}
-                </p>
+
+                <div className="rounded-xl border border-blue-100 bg-blue-50 p-3">
+                  <p className="text-xs text-blue-700">
+                    Nominal zakat akan disalurkan 100%.
+                    <br />
+                    Biaya layanan pembayaran sebesar Rp4.000 ditambahkan pada
+                    total transaksi.
+                  </p>
+                </div>
+
+                <div className="w-full rounded-xl border border-slate-200 bg-slate-100 py-3 px-4">
+                  <p className="text-xl text-slate-800 font-bold">
+                    Rp {Number(total).toLocaleString("id-ID")}
+                  </p>
+                </div>
               </div>
 
               <NiatZakat />

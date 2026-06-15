@@ -533,4 +533,42 @@ export const kurbanData = [
       "Sapi premium sehat dengan distribusi daging ke wilayah membutuhkan.",
   },
 ];
+
+export const chartData = [
+  {
+    month: "Jan",
+    donasi: 12500000,
+    donatur: 120,
+  },
+  {
+    month: "Feb",
+    donasi: 18500000,
+    donatur: 180,
+  },
+  {
+    month: "Mar",
+    donasi: 22000000,
+    donatur: 210,
+  },
+  {
+    month: "Apr",
+    donasi: 16500000,
+    donatur: 145,
+  },
+  {
+    month: "Mei",
+    donasi: 27800000,
+    donatur: 250,
+  },
+  {
+    month: "Jun",
+    donasi: 32000000,
+    donatur: 310,
+  },
+  {
+    month: "Jul",
+    donasi: 28900000,
+    donatur: 270,
+  },
+];
 // thumb default appwrite 6a1a9cd9001e758533d2

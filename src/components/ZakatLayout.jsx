@@ -12,7 +12,7 @@ const ZakatLayout = () => {
   return (
     <>
       <div className="mt-20">
-        <div className="md:px-10 px-5 py-5 text-blue-700 font-bold text-xl md:text-4xl uppercase">
+        <div className="md:px-10 px-5 py-5 text-blue-700 drop-shadow-[1px_1px_0px_black] font-bold text-xl md:text-4xl uppercase">
           <p>
             Tunaikan zakat sucikan jiwa <br />
             <span className="text-yellow-300">sempurnakan ibadah</span>
