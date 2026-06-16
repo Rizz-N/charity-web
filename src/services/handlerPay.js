@@ -40,12 +40,12 @@ export const paymentHandler = {
         },
 
         onClose: function () {
-          console.log("Popup ditutup");
+          toast("Popup ditutup");
         },
       });
     } catch (error) {
-      console.error("Error fetch payment method", error);
-
+      // console.error("Error fetch payment method", error);
+      toast.error("Pembayaran gagal dimuat");
       throw error;
     }
   },

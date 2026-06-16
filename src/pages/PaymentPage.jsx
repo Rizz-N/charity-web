@@ -206,7 +206,7 @@ const PaymentPage = () => {
               onClick={() =>
                 paymentHandler.getTokenPay(
                   {
-                    slug: slug,
+                    id: datas.p_id,
                     amount: amount,
                     name: name,
                     email: email,
