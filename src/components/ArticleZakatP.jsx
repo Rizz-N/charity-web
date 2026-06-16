@@ -1,5 +1,5 @@
 import React from "react";
-import PanduanZakat from "./panduanZakat";
+import PanduanZakat from "./PanduanZakat";
 import NiatZakat from "./NiatZakat";
 const niatZakat =
   "https://baznas.go.id/assets/images/zakat/banner-niat-zakat-mal.jpg";

@@ -1,5 +1,5 @@
 import React from "react";
-import PanduanZakat from "./panduanZakat";
+import PanduanZakat from "./PanduanZakat";
 import NiatZakat from "./NiatZakat";
 
 const ArticleMal = () => {
