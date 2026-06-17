@@ -17,6 +17,8 @@ import ZFitrah from "./pages/ZFitrah";
 import ZFidyah from "./pages/ZFidyah";
 import ZEmas from "./pages/ZEmas";
 import PaymentPage from "./pages/PaymentPage";
+import PaymentKurban from "./pages/PaymentKurban";
+import Paymentzakat from "./pages/Paymentzakat";
 
 //
 
@@ -25,7 +27,6 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminLayout from "./components/AdminLayout";
 import Article from "./pages/admin/Article";
 import Product from "./pages/admin/Product";
-import Paymentzakat from "./pages/Paymentzakat";
 import ZakatLayout from "./components/ZakatLayout";
 import ArticleLayout from "./components/ArticleLayout";
 import UpdateArticle from "./pages/admin/UpdateArticle";
@@ -54,6 +55,7 @@ function App() {
             <Route path="zakat/:type/bayar" element={<Paymentzakat />} />
             <Route path="waqaf" element={<WaqafPage />} />
             <Route path="kurban" element={<KurbanPage />} />
+            <Route path="kurban/bayar/:slug" element={<PaymentKurban />} />
           </Route>
           <Route path="auth" element={<Auth />} />
           <Route path="dashboard" element={<AdminLayout />}>

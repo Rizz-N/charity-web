@@ -185,10 +185,9 @@ const DonasiPage = () => {
                           e.stopPropagation();
                           setOpenShare(openShare === d.id ? null : d.id);
                         }}
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 hover:bg-slate-50"
+                        className="flex items-center gap-2 px-2 py-2 rounded-full cursor-pointer border border-slate-200 hover:bg-blue-100"
                       >
                         <FaShareAlt />
-                        Share
                       </button>
 
                       {openShare === d.id && (

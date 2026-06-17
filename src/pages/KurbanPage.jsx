@@ -88,7 +88,7 @@ ${getShareUrl(slug)}`;
                           e.stopPropagation();
                           setOpenShare(openShare === k.id ? null : k.id);
                         }}
-                        className="p-3 rounded-xl border border-slate-200 hover:bg-slate-50"
+                        className="p-3 rounded-full cursor-pointer border border-slate-200 hover:bg-blue-100"
                       >
                         <FaShareAlt />
                       </button>
@@ -136,7 +136,7 @@ ${getShareUrl(slug)}`;
                     </div>
 
                     <Link
-                      to={k.slug}
+                      to={`bayar/${k.slug}`}
                       className="px-5 py-3 rounded-xl bg-blue-500 text-white font-medium hover:bg-blue-600 transition duration-300"
                     >
                       Kurban Sekarang

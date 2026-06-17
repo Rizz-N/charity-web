@@ -42,19 +42,19 @@ const PaymentPage = () => {
   }
   return (
     <>
-      {/* <div className="mt-20 px-10">
+      <div className="mt-20 px-10">
         <Breadcrumb />
-      </div> */}
+      </div>
       {/* hero */}
       <div
         key={datas.id}
-        className="mt-20 bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-start gap-8 px-6 md:px-10 py-10 rounded-b-3xl"
+        className="bg-linear-to-r from-blue-500 to-blue-700 flex flex-col md:flex-row justify-center items-center gap-8 px-6 md:px-10 py-10 rounded-b-3xl"
       >
-        <div className="w-full">
+        <div>
           <img
             src={datas.thumbnail}
             alt="image"
-            className="w-full object-cover rounded-3xl shadow-xl"
+            className="w-full min-w-62.5 max-w-112.5 h-75 object-cover rounded-3xl shadow-xl"
           />
         </div>
 

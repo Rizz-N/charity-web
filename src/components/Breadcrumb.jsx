@@ -7,7 +7,7 @@ const Breadcrumb = () => {
 
   // ambil path dan pecah
   const pathnames = location.pathname.split("/").filter((x) => x);
-
+  const disablePaths = ["bayar"];
   return (
     <div className="flex items-center gap-2 pb-4 text-sm flex-wrap ml-5">
       {/* home */}
@@ -20,12 +20,13 @@ const Breadcrumb = () => {
         const to = `/${pathnames.slice(0, index + 1).join("/")}`;
 
         const isLast = index === pathnames.length - 1;
+        const isDisabled = disablePaths.includes(value);
 
         return (
           <React.Fragment key={to}>
             <span className="text-slate-400">/</span>
 
-            {isLast ? (
+            {isLast || isDisabled ? (
               <span className="text-slate-700 capitalize">
                 {decodeURIComponent(value).replace(/-/g, " ")}
               </span>
