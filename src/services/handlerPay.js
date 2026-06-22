@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 export const paymentHandler = {
   getTokenPay: async (payload, resetForm) => {
     try {
-      const response = await fetch("http://localhost:8080/pay", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/pay`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
