@@ -21,24 +21,24 @@ const Sidebar = () => {
     },
     {
       name: "Article",
-      path: "/dashboard/article",
+      path: "/dashboard/article/create",
       icon: <FaBook size={20} />,
     },
     {
       name: "Product",
-      path: "/dashboard/product",
+      path: "/dashboard/product/create",
       icon: <FaBoxOpen size={20} />,
     },
-    {
-      name: "Users",
-      path: "users",
-      icon: <FaUsers size={20} />,
-    },
-    {
-      name: "Settings",
-      path: "settings",
-      icon: <FaCog size={20} />,
-    },
+    // {
+    //   name: "Users",
+    //   path: "users",
+    //   icon: <FaUsers size={20} />,
+    // },
+    // {
+    //   name: "Settings",
+    //   path: "settings",
+    //   icon: <FaCog size={20} />,
+    // },
   ];
 
   const logout = async () => {

@@ -7,7 +7,9 @@ import { paymentHandler } from "../services/handlerPay";
 
 const PaymentPage = () => {
   const { slug } = useParams();
-  const datas = data.find((item) => item.slug === slug);
+  const dataDua = JSON.parse(localStorage.getItem("articles")) || [];
+  const allData = [...data, ...dataDua];
+  const datas = allData.find((item) => item.slug === slug);
   const nominalList = [10000, 20000, 50000, 100000, 200000, 500000];
 
   const [amount, setAmount] = useState("");

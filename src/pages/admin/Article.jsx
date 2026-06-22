@@ -4,6 +4,7 @@ import { FaPlus, FaTrash, FaFileAlt } from "react-icons/fa";
 
 const Article = () => {
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [pId, setPId] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
@@ -97,6 +98,7 @@ const Article = () => {
       p_id: pId,
       slug: title.toLowerCase().replaceAll(" ", "-"),
       title,
+      category,
       excerpt,
       thumbnail: thumbnailBase64,
       createdAt: new Date().toLocaleDateString("id-ID"),
@@ -119,7 +121,7 @@ const Article = () => {
   const thumbnailPreview = thumbnail ? URL.createObjectURL(thumbnail) : null;
 
   return (
-    <div className="p-6">
+    <div>
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <h1 className="text-2xl font-bold mb-6">Create Article</h1>
 
@@ -137,6 +139,20 @@ const Article = () => {
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600"
               />
             </div>
+          </div>
+
+          <div>
+            <label className="font-medium block mb-2">Kategori</label>
+
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full border border-slate-300 rounded-xl p-3"
+            >
+              <option value="wakaf">Wakaf</option>
+              <option value="donasi">Donasi</option>
+            </select>
           </div>
 
           <div>
@@ -271,7 +287,7 @@ const Article = () => {
         <div className="mt-10 border-t pt-8">
           <h2 className="text-2xl font-bold mb-6">Preview Artikel</h2>
 
-          <div className="bg-white border rounded-2xl overflow-hidden shadow">
+          <div className="relative bg-white border rounded-2xl overflow-hidden shadow">
             {/* Thumbnail */}
             {thumbnailPreview && (
               <img
@@ -281,10 +297,14 @@ const Article = () => {
               />
             )}
 
+            <p className="absolute right-2 top-3 bg-green-500 px-5 py-2 text-xl font-medium text-white rounded-xl">
+              {category || "kategori berita"}
+            </p>
+
             <div className="p-8">
               {/* Judul */}
               <h1 className="text-4xl font-bold mb-4">
-                {title || "Judul Berita"}
+                {title || "Judul Berita"}{" "}
               </h1>
 
               {/* Excerpt */}

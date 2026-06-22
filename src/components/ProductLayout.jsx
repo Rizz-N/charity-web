@@ -1,7 +1,7 @@
 import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
-const ArticleLayout = () => {
+const ProductLayout = () => {
   const link = [
     { id: 1, name: "CREATE", path: "create" },
     { id: 2, name: "MANAGE", path: "manage" },
@@ -9,8 +9,8 @@ const ArticleLayout = () => {
   return (
     <>
       <div>
-        <div className="bg-linear-to-r from-slate-900 to-slate-700 py-4 px-5 md:px-10 flex items-end gap-6 text-white  justify-between">
-          <p className="text-2xl font-bold">Manage Articles</p>
+        <div className="bg-linear-to-r from-slate-900 to-slate-700 py-4 px-5 md:px-10 flex gap-6  text-white  justify-between">
+          <p className="text-2xl font-bold">Manage Product</p>
           <div className="flex gap-3 px-4 py-1 rounded-lg">
             {link.map((l) => {
               return (
@@ -35,4 +35,4 @@ const ArticleLayout = () => {
   );
 };
 
-export default ArticleLayout;
+export default ProductLayout;

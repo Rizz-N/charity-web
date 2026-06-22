@@ -6,8 +6,10 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const WaqafDetails = () => {
   const { slug } = useParams();
+  const dataDua = JSON.parse(localStorage.getItem("articles")) || [];
 
-  const news = data.find((item) => item.slug === slug);
+  const allArticles = [...data, ...dataDua];
+  const news = allArticles.find((item) => item.slug === slug);
 
   if (!news) {
     return <p>Tidak ada Data</p>;

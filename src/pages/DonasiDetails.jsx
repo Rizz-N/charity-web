@@ -7,8 +7,21 @@ import Breadcrumb from "../components/Breadcrumb";
 const DonasiDetails = () => {
   const { slug } = useParams();
 
-  const news = data.find((item) => item.slug === slug);
+  const dataDua = JSON.parse(localStorage.getItem("articles")) || [];
 
+  const allArticles = [...data, ...dataDua];
+
+  const news = allArticles.find((item) => item.slug === slug);
+
+  const formatTanggal = (tanggal) => {
+    const [day, month, year] = tanggal.split("/");
+
+    return new Date(year, month - 1, day).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
   if (!news) {
     return <p>Tidak ada Data</p>;
   }

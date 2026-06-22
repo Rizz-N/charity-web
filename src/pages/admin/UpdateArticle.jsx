@@ -100,25 +100,49 @@ const UpdateArticle = () => {
     setIsOpen(false);
   };
 
+  const handleDelete = (id) => {
+    if (!window.confirm("Hapus produk?")) return;
+
+    const updated = articles.filter((item) => item.id !== id);
+
+    localStorage.setItem("articles", JSON.stringify(updated));
+
+    setArticles(updated);
+
+    toast.success("Produk berhasil dihapus");
+  };
+  const getCategoryStyle = (category) => {
+    switch (category) {
+      case "wakaf":
+        return "bg-green-100 text-green-700 border-green-200";
+      case "donasi":
+        return "bg-blue-100 text-blue-700 border-blue-200";
+    }
+  };
   return (
-    <div className="p-6">
+    <div>
       <div className="bg-white rounded-2xl shadow-lg p-6">
         <h1 className="text-2xl font-bold mb-6">Update Article</h1>
 
-        <div className="flex gap-2">
+        <div className="grid md:grid-cols-3 gap-6">
           {articles.map((d) => {
             return (
               <div
                 key={d.id}
-                className="bg-white flex flex-row md:flex-col rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 group"
+                className="bg-white flex flex-row md:flex-col rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 group"
               >
                 {/* image */}
-                <div className="w-40 md:w-full md:h-52 shrink-0 overflow-hidden">
+                <div className="relative w-40 md:w-full md:h-52 shrink-0 overflow-hidden">
                   <img
                     src={d.thumbnail}
                     alt={d.title}
-                    className="w-full h-full object-cover "
+                    className="w-full h-full object-cover"
                   />
+                  <p
+                    className={`absolute top-1 right-1 px-4 py-1 ${getCategoryStyle(d.category)} `}
+                  >
+                    {d.category}
+                  </p>
                 </div>
 
                 {/* content */}
@@ -127,26 +151,26 @@ const UpdateArticle = () => {
                     {d.createdAt}
                   </span>
 
-                  <p className="text-base md:text-xl font-bold text-slate-800 line-clamp-2">
+                  <p className="text-base md:text-sm font-bold text-slate-800 line-clamp-2">
                     {d.title}
                   </p>
 
-                  <p className="text-sm md:text-base text-slate-500 leading-relaxed line-clamp-3">
+                  <p className="text-sm md:text-sm text-slate-500 leading-relaxed line-clamp-3">
                     {d.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="relative mt-auto">
-                      <button className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 hover:bg-slate-50">
-                        Share
-                      </button>
-                    </div>
-
+                  <div className="grid grid-cols-2 gap-3 mt-auto">
                     <button
                       onClick={() => handleOpenUpdate(d)}
-                      className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
+                      className="mt-auto  px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
                     >
-                      Update
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(d.id)}
+                      className="mt-auto  px-4 py-2 text-xs md:text-sm rounded-xl bg-red-600 text-white hover:bg-red-700 transition"
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

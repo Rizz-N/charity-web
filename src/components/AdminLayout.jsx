@@ -6,7 +6,7 @@ const AdminLayout = () => {
     <div className="flex min-h-screen bg-slate-100">
       <Sidebar />
 
-      <main className="flex-1 p-6 transition-all duration-300">
+      <main className="flex-1 transition-all duration-300">
         <Outlet />
       </main>
     </div>

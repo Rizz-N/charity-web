@@ -31,6 +31,8 @@ import ZakatLayout from "./components/ZakatLayout";
 import ArticleLayout from "./components/ArticleLayout";
 import UpdateArticle from "./pages/admin/UpdateArticle";
 import DeleteArticle from "./pages/admin/DeleteArticle";
+import ProductLayout from "./components/ProductLayout";
+import ManageProduct from "./pages/admin/ManageProduct";
 
 function App() {
   return (
@@ -61,11 +63,13 @@ function App() {
           <Route path="dashboard" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="article" element={<ArticleLayout />}>
-              <Route index element={<Article />} />
-              <Route path="update" element={<UpdateArticle />} />
-              <Route path="delete" element={<DeleteArticle />} />
+              <Route path="create" element={<Article />} />
+              <Route path="manage" element={<UpdateArticle />} />
             </Route>
-            <Route path="product" element={<Product />} />
+            <Route path="product" element={<ProductLayout />}>
+              <Route path="create" element={<Product />} />
+              <Route path="manage" element={<ManageProduct />} />
+            </Route>
           </Route>
         </Routes>
       </Router>

@@ -13,6 +13,8 @@ import { data } from "../models/content";
 
 const WaqafPage = () => {
   const options = ["Terbaru", "Terlama", "Sisa Hari Terdekat"];
+  const dataDua = JSON.parse(localStorage.getItem("articles")) || [];
+  const filtered = dataDua.filter((item) => item.category === "wakaf");
 
   const filterData = data.filter((item) => item.type === "waqaf");
 
@@ -20,7 +22,16 @@ const WaqafPage = () => {
   const [open, setOpen] = useState(false);
   const [openShare, setOpenShare] = useState(null);
 
-  // const BASEURL = ""
+  const formatTanggal = (tanggal) => {
+    const [day, month, year] = tanggal.split("/");
+
+    return new Date(year, month - 1, day).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
+  // const BASE_URL = ""
   const getShareUrl = (slug) => {
     // ini nanti di ganti BASE_URL
     return `${window.location.origin}/donasi/${slug}`;
@@ -230,6 +241,98 @@ const WaqafPage = () => {
                         </div>
                       )}
                     </div>
+                    <Link
+                      to={`/waqaf/${d.slug}`}
+                      className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          {filtered.map((d) => {
+            return (
+              <div
+                key={d.id}
+                className="bg-white flex flex-row md:flex-col rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition duration-300 group"
+              >
+                {/* image */}
+                <div className="w-40 md:w-full md:h-52 shrink-0 overflow-hidden">
+                  <img
+                    src={d.thumbnail}
+                    alt={d.title}
+                    className="w-full h-full object-cover "
+                  />
+                </div>
+
+                {/* content */}
+                <div className="p-4 md:p-6 flex flex-col flex-1 gap-3">
+                  <span className="text-xs md:text-sm text-blue-600 font-medium">
+                    {formatTanggal(d.createdAt)}
+                  </span>
+
+                  <p className="text-base md:text-xl font-bold text-slate-800 line-clamp-2">
+                    {d.title}
+                  </p>
+
+                  <p className="text-sm md:text-base text-slate-500 leading-relaxed line-clamp-3">
+                    {d.excerpt}
+                  </p>
+
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="relative mt-auto">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenShare(openShare === d.id ? null : d.id);
+                        }}
+                        className="flex items-center gap-2 px-2 py-2 rounded-full cursor-pointer border border-slate-200 hover:bg-blue-100"
+                      >
+                        <FaShareAlt />
+                      </button>
+
+                      {openShare === d.id && (
+                        <div
+                          className="absolute bottom-12 left-0 bg-white rounded-2xl shadow-xl border border-slate-200 p-3 flex gap-3 z-50"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {/* WhatsApp */}
+                          <a
+                            href={`https://wa.me/?text=${encodeURIComponent(
+                              getShareText(d.title, d.excerpt, d.slug),
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-2xl text-green-500 hover:scale-110 transition"
+                          >
+                            <FaWhatsapp />
+                          </a>
+
+                          {/* Facebook */}
+                          <a
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                              getShareUrl(d.slug),
+                            )}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-2xl text-blue-600 hover:scale-110 transition"
+                          >
+                            <FaFacebook />
+                          </a>
+
+                          {/* Copy Link */}
+                          <button
+                            onClick={() => copyLink(d.slug)}
+                            className="text-2xl text-slate-600 hover:scale-110 transition"
+                          >
+                            <FaLink />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
                     <Link
                       to={`/waqaf/${d.slug}`}
                       className="mt-auto w-fit px-4 py-2 text-xs md:text-sm rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition"

@@ -1,26 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaBoxOpen, FaImage, FaSave } from "react-icons/fa";
+import { FaImage } from "react-icons/fa";
 
-const Product = () => {
+const UpdateProduct = ({ product, products, setProducts, onClose }) => {
   const [form, setForm] = useState({
-    title: "",
-    slug: "",
-    category: "kambing",
-    price: "",
-    weight_min: "",
-    weight_max: "",
-    stock: "",
-    description: "",
+    title: product.title,
+    slug: product.slug,
+    category: product.category,
+    price: product.price,
+    weight_min: product.weight_min,
+    weight_max: product.weight_max,
+    stock: product.stock,
+    description: product.description,
   });
 
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
-
-  const formatRupiah = (value) => {
-    const number = value.replace(/\D/g, "");
-    return new Intl.NumberFormat("id-ID").format(number);
-  };
+  const [image, setImage] = useState(product.image);
 
   const generateSlug = (text) => {
     return text
@@ -39,6 +33,7 @@ const Product = () => {
         title: value,
         slug: generateSlug(value),
       }));
+
       return;
     }
 
@@ -46,15 +41,6 @@ const Product = () => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    setImage(file);
-    setPreview(URL.createObjectURL(file));
   };
 
   const fileToBase64 = (file) =>
@@ -71,82 +57,51 @@ const Product = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const imageBase64 = image ? await fileToBase64(image) : null;
+    const imageData = image instanceof File ? await fileToBase64(image) : image;
 
-    const newProduct = {
-      id: Date.now(),
-      title: form.title,
-      slug: form.slug,
-      category: form.category,
-      price: Number(form.price),
-      weight_min: Number(form.weight_min),
-      weight_max: Number(form.weight_max),
-      stock: Number(form.stock),
-      description: form.description,
-      image: imageBase64,
-    };
+    const updatedProducts = products.map((item) =>
+      item.id === product.id
+        ? {
+            ...item,
+            ...form,
+            image: imageData,
+          }
+        : item,
+    );
 
-    const products = JSON.parse(localStorage.getItem("products")) || [];
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
 
-    products.push(newProduct);
-    localStorage.setItem("products", JSON.stringify(products));
+    setProducts(updatedProducts);
 
-    toast.success("Berhasil disimpan");
-    setForm({
-      title: "",
-      slug: "",
-      category: "kambing",
-      price: "",
-      weight_min: "",
-      weight_max: "",
-      stock: "",
-      description: "",
-    });
-    setImage(null);
-    setPreview(null);
-    console.log("Data:", newProduct);
+    toast.success("Produk berhasil diperbarui");
+
+    onClose();
   };
 
-  const data = localStorage.getItem("products");
-  console.log("dats :", data);
+  const preview = image instanceof File ? URL.createObjectURL(image) : image;
 
   return (
-    <div className="bg-slate-100 min-h-screen">
-      <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
-        {/* Header */}
-        <div className="bg-linear-to-r from-emerald-600 to-green-700 p-6">
-          <div className="flex items-center gap-3 text-white">
-            <FaBoxOpen size={28} />
-            <div>
-              <h1 className="text-2xl font-bold">Tambah Produk Kurban</h1>
-              <p className="text-sm text-green-100">
-                Kelola produk kurban yang akan ditampilkan ke website
-              </p>
-            </div>
-          </div>
-        </div>
+    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+      <div className="bg-white p-6 rounded-lg w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+        <h2 className="text-2xl font-bold mb-5">Edit Produk</h2>
 
         <form onSubmit={handleSubmit} className="grid lg:grid-cols-3 gap-6 p-6">
-          {/* Upload */}
           <div className="lg:col-span-1">
             <div className="border-2 border-dashed border-slate-300 rounded-2xl p-5">
-              <h2 className="font-semibold mb-4 flex items-center gap-2">
+              <p className="font-semibold mb-4 flex items-center gap-2">
                 <FaImage />
-                Thumbnail Produk
-              </h2>
-
+                Thumbnail Product
+              </p>
               <input
                 type="file"
-                accept="image/*"
-                onChange={handleImage}
+                onChange={(e) => setImage(e.target.files[0])}
                 className="w-full"
               />
-
               <div className="mt-4">
                 {preview ? (
                   <img
                     src={preview}
-                    alt="preview"
+                    alt=""
                     className="w-full h-64 object-cover rounded-xl"
                   />
                 ) : (
@@ -157,46 +112,38 @@ const Product = () => {
               </div>
             </div>
           </div>
-
-          {/* Form */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="col-span-2 space-y-5">
             <div>
               <label className="font-medium block mb-2">Nama Produk</label>
-
               <input
                 type="text"
                 name="title"
                 value={form.title}
                 onChange={handleChange}
-                placeholder="Contoh: Domba Premium"
+                placeholder="Nama Produk"
                 className="w-full border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-
             <div>
               <label className="font-medium block mb-2">Slug</label>
-
               <input
                 type="text"
-                name="slug"
                 value={form.slug}
                 readOnly
-                className="w-full border border-slate-300 rounded-xl p-3 bg-slate-100"
+                className="w-full border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-
             <div>
-              <label className="font-medium block mb-2">Kategori</label>
+              <label className="font-medium block mb-2">kategori</label>
 
               <select
                 name="category"
                 value={form.category}
                 onChange={handleChange}
-                className="w-full border border-slate-300 rounded-xl p-3"
+                className="w-full border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-green-500 outline-none"
               >
                 <option value="kambing">Kambing</option>
                 <option value="domba">Domba</option>
-
                 <option value="sapi">Sapi</option>
               </select>
             </div>
@@ -271,23 +218,22 @@ const Product = () => {
                 className="w-full border border-slate-300 rounded-xl p-3 resize-none"
               />
             </div>
+            <div className="flex gap-3">
+              <button
+                type="submit"
+                className="bg-green-600 text-white px-5 py-3 rounded-xl"
+              >
+                Simpan
+              </button>
 
-            <button
-              type="submit"
-              className="
-                flex items-center gap-2
-                bg-green-600
-                hover:bg-green-700
-                text-white
-                px-6
-                py-3
-                rounded-xl
-                transition-all
-              "
-            >
-              <FaSave />
-              Simpan Produk
-            </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="bg-gray-300 px-5 py-3 rounded-xl"
+              >
+                Batal
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -295,4 +241,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default UpdateProduct;

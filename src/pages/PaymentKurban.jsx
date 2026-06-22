@@ -26,8 +26,10 @@ const PaymentKurban = () => {
   const reset = () => setCount(0);
 
   const serviceFee = 4000;
+  const data = JSON.parse(localStorage.getItem("products")) || [];
+  const allData = [...data, ...kurbanData];
 
-  const datas = kurbanData.find((item) => item.slug === slug);
+  const datas = allData.find((item) => item.slug === slug);
   const amount = datas ? datas.price * count : 0;
   const fixAmount = datas ? datas.price * count + serviceFee : 0;
 
